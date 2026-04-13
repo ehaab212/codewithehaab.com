@@ -56,7 +56,7 @@ const Home = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 mb-6">
           <a
-            href="/ehaab_cv.pdf"
+            href="/ehaab_ullah_cv.pdf"
             download
             className="px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 transform hover:-translate-y-1"
             style={{ backgroundColor: secondaryColor }}

@@ -19,9 +19,9 @@ import {
 // === IMPORT YOUR IMAGES ===
 import stoneyRoad from "../assets/stoney-road.PNG";
 import jamalMedical from "../assets/jamal-medical.jpg";
-import pakizaFoods from "../assets/pakiza-foods.png";
-import explorationBlog from "../assets/exploration-blog.png";
-import satpk from "../assets/satpk.png";
+import pakizaFoods from "../assets/pakiza-foods.PNG";
+import explorationBlog from "../assets/exploration-blog.PNG";
+import satpk from "../assets/satpk.PNG";
 // import princessHubs from "../assets/princess-hubs.png";
 import sheryWholesale from "../assets/shery-wholesale.png";
 import inventoryVisit from "../assets/inventory-visit.png";

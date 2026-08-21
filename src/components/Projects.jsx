@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 
 // === IMPORT YOUR IMAGES ===
-import stoneyRoad from "../assets/stoney-road.png";
+import stoneyRoad from "../assets/stoney-road.PNG";
 import jamalMedical from "../assets/jamal-medical.jpg";
 import pakizaFoods from "../assets/pakiza-foods.png";
 import explorationBlog from "../assets/exploration-blog.png";

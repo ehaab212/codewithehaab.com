@@ -22,7 +22,6 @@ import jamalMedical from "../assets/jamal-medical.jpg";
 import pakizaFoods from "../assets/pakiza-foods.PNG";
 import explorationBlog from "../assets/exploration-blog.PNG";
 import satpk from "../assets/satpk.PNG";
-import princessHubs from "../assets/princess-hubs.png";
 import sheryWholesale from "../assets/shery-wholesale.PNG";
 import inventoryVisit from "../assets/inventory-visit.PNG";
 import gulisCollection from "../assets/gulis-collection.PNG";

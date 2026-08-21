@@ -1,6 +1,6 @@
 // src/components/Projects.jsx
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import {
   FaLaptopCode,
   FaShoppingCart,
@@ -22,7 +22,7 @@ import jamalMedical from "../assets/jamal-medical.jpg";
 import pakizaFoods from "../assets/pakiza-foods.png";
 import explorationBlog from "../assets/exploration-blog.png";
 import satpk from "../assets/satpk.png";
-import princessHubs from "../assets/princess-hubs.png";
+// import princessHubs from "../assets/princess-hubs.png";
 import sheryWholesale from "../assets/shery-wholesale.png";
 import inventoryVisit from "../assets/inventory-visit.png";
 import gulisCollection from "../assets/gulis-collection.png";

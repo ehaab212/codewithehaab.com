@@ -18,6 +18,7 @@ import {
 
 // === IMPORT YOUR IMAGES ===
 import stoneyRoad from "../assets/stoney-road.PNG";
+import frontPage from "../assets/front page.PNG";
 import jamalMedical from "../assets/jamal-medical.jpg";
 import pakizaFoods from "../assets/pakiza-foods.PNG";
 import explorationBlog from "../assets/exploration-blog.PNG";
@@ -41,6 +42,12 @@ const backgroundIcons = [
 ];
 
 const projects = [
+  {
+    title: "Heritage Tours",
+    desc: "Frontend showcase for a heritage tourism website featuring destination browsing, travel experiences, and a user-friendly trip discovery interface.",
+    image: frontPage,
+    link: "https://heritage-tours-nu.vercel.app/",
+  },
   {
     title: "Depression Detection (NLP)",
     desc: "End-to-end NLP pipeline for identifying depression in social media posts using TF-IDF, embeddings and classifiers (SVM/GBM/LSTM). Achieved strong classification performance in research experiments.",

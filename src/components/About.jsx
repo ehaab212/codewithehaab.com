@@ -1,116 +1,89 @@
 // src/components/About.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import { FaLaptopCode, FaServer, FaBrain } from "react-icons/fa";
+
+const focusAreas = [
+  {
+    title: "Full-Stack Development",
+    stack: "React.js · Node.js · Express.js · MongoDB",
+    desc: "Developing responsive client applications and robust server architectures with modern JavaScript ecosystems.",
+    icon: <FaLaptopCode className="text-xl text-orange-400" />,
+  },
+  {
+    title: "Backend & APIs",
+    stack: "RESTful APIs · Authentication · Database Management",
+    desc: "Designing secure RESTful endpoints, data models in MongoDB/MySQL, and scalable business logic.",
+    icon: <FaServer className="text-xl text-orange-400" />,
+  },
+  {
+    title: "AI & Research",
+    stack: "Machine Learning · NLP · Deep Learning",
+    desc: "Implementing ML pipelines for text sentiment classification and deep learning models for video frame forensics.",
+    icon: <FaBrain className="text-xl text-orange-400" />,
+  },
+];
 
 const About = () => {
-  const primaryColor = "#0A2647";   // Navy Blue
-  const secondaryColor = "#FF7A00"; // Vibrant Orange
-
-  const shapes = [
-    { size: 32, top: "10%", left: "5%", rotate: 45, border: "border-t-4 border-l-4" },
-    { size: 24, top: "70%", left: "80%", rotate: 12, border: "border-r-4 border-b-4" },
-    { size: 48, top: "50%", left: "50%", rotate: 0, border: "rounded-full border-2" },
-    { size: 20, top: "30%", left: "75%", rotate: 30, border: "border-l-2 border-b-2" },
-    { size: 40, top: "80%", left: "20%", rotate: 60, border: "border-t-4 border-r-4" },
-  ];
-
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
-      style={{ backgroundColor: primaryColor }}
+      id="about"
+      aria-label="About Me"
+      className="relative py-20 px-6 md:px-16 lg:px-20 bg-[#0A2647] border-t border-white/5"
     >
-      {/* Animated Background Shapes */}
-      {shapes.map((shape, index) => (
+      <div className="max-w-5xl mx-auto">
+        
+        {/* SECTION HEADER */}
         <motion.div
-          key={index}
-          className={`absolute ${shape.border} border-orange-500 opacity-20`}
-          style={{
-            width: `${shape.size}rem`,
-            height: `${shape.size}rem`,
-            top: shape.top,
-            left: shape.left,
-            transform: `rotate(${shape.rotate}deg)`,
-          }}
-          animate={{
-            y: [0, 20, -10, 0],
-            x: [0, -15, 10, 0],
-            rotate: [shape.rotate, shape.rotate + 360, shape.rotate],
-          }}
-          transition={{
-            duration: 15 + index * 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-12"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold tracking-wider text-orange-400 uppercase mb-3">
+            About Me
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Engineering Scalable Web Solutions & AI Research
+          </h2>
 
-      {/* Subtle Gradient Overlay */}
-      <motion.div
-        className="absolute w-full h-full top-0 left-0"
-        style={{
-          background: "radial-gradient(circle at 30% 30%, rgba(255,122,0,0.05), transparent 80%), radial-gradient(circle at 70% 70%, rgba(255,255,255,0.03), transparent 80%)",
-        }}
-      />
+          {/* MAIN NARRATIVE PARAGRAPH */}
+          <p className="mt-5 text-base sm:text-lg text-gray-300 leading-relaxed max-w-4xl">
+            Software Engineer and MERN Stack Developer focused on building full-stack web applications using React, Node.js, Express.js, and MongoDB. I have experience developing RESTful APIs, responsive interfaces, authentication systems, and database-driven applications. Alongside software development, I have research experience in NLP and deep learning-based video forensics.
+          </p>
+        </motion.div>
 
-      {/* Heading */}
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold text-white mb-6 z-10"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        About <span style={{ color: secondaryColor }}>Me</span>
-      </motion.h2>
+        {/* PROFESSIONAL FOCUS CARDS */}
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">
+            Core Professional Focus
+          </h3>
 
-      {/* Description */}
-      <motion.div
-        className="max-w-3xl text-center bg-opacity-20 backdrop-blur-md p-8 rounded-2xl shadow-xl border z-10"
-        style={{ borderColor: secondaryColor }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <p className="text-lg md:text-xl text-white leading-relaxed">
-          Hello! I'm{" "}
-          <span style={{ color: secondaryColor }} className="font-semibold">
-            Ehaab Ullah
-          </span>
-          , a Software Engineer with professional experience in full-stack web development using the MERN stack, RESTful API development, and applied machine learning. I work on scalable, responsive web applications and research-focused ML solutions in NLP and computer vision.
-        </p>
-      </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {focusAreas.map((area, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
+                className="bg-white/5 border border-white/10 hover:border-orange-500/40 rounded-xl p-6 transition-all duration-200 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                    {area.icon}
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-1.5">{area.title}</h4>
+                  <p className="text-xs font-medium text-orange-400 mb-3">{area.stack}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed">{area.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-      {/* Skills */}
-      <motion.div
-        className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 z-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        {[
-          "MERN (MongoDB, Express, React, Node.js)",
-          "RESTful APIs",
-          "Machine Learning & Deep Learning",
-          "Data Analysis & Visualization",
-          "Python & NLP",
-          "Model Deployment",
-          "Research & Publications",
-          "CI/CD & DevOps",
-        ].map((skill, index) => (
-          <motion.div
-            key={index}
-            className="px-4 py-2 rounded-full text-white text-center font-semibold text-sm border cursor-pointer"
-            style={{ borderColor: secondaryColor }}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: secondaryColor,
-              color: "#fff",
-            }}
-            transition={{ type: "spring", stiffness: 200 }}
-          >
-            {skill}
-          </motion.div>
-        ))}
-      </motion.div>
+      </div>
     </section>
   );
 };

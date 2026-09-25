@@ -2,185 +2,243 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  SiReact,
-  SiTailwindcss,
-  SiBootstrap,
-  SiGithub,
-  SiVercel,
-  SiWordpress,
   SiHtml5,
   SiCss3,
   SiJavascript,
+  SiReact,
   SiNodedotjs,
-  SiPhp,
+  SiExpress,
+  SiMongodb,
   SiMysql,
-  SiWoocommerce,
-  SiTableau,
-  SiPython,
-  SiTensorflow,
-  SiPytorch,
-  SiScikitlearn,
+  SiFirebase,
+  SiGit,
+  SiGithub,
+  SiStripe,
+  SiOpenai,
 } from "react-icons/si";
-import { FaShoppingCart, FaPalette, FaLaptopCode, FaSearchDollar, FaDatabase, FaChartLine, FaNetworkWired } from "react-icons/fa";
+import {
+  FaCode,
+  FaServer,
+  FaDatabase,
+  FaTools,
+  FaBrain,
+  FaGraduationCap,
+  FaNetworkWired,
+  FaChartLine,
+  FaFileAlt,
+  FaCheckDouble,
+  FaRobot,
+  FaCloud,
+} from "react-icons/fa";
 
-// UPDATED FINAL SKILLS
-const skills = [
-  { name: "HTML5", icon: <SiHtml5 className="text-[#E34F26]" /> },
-  { name: "CSS3", icon: <SiCss3 className="text-[#1572B6]" /> },
-  { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
-  { name: "React", icon: <SiReact className="text-[#61DBFB]" /> },
-  { name: "RESTful APIs", icon: <FaNetworkWired className="text-[#4DB6AC]" /> },
-  { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
-  { name: "PHP", icon: <SiPhp className="text-[#777BB4]" /> },
-  { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
-  { name: "WooCommerce", icon: <SiWoocommerce className="text-[#96588A]" /> },
-  { name: "Data Visualization (Tableau)", icon: <SiTableau className="text-[#E97627]" /> },
-  { name: "Data Management", icon: <FaDatabase className="text-[#00BCD4]" /> },
-  { name: "Machine Learning / Deep Learning", icon: <SiTensorflow className="text-[#FF6F00]" /> },
-  { name: "Python", icon: <SiPython className="text-[#3572A5]" /> },
-  { name: "Data Preprocessing & EDA", icon: <FaChartLine className="text-[#38BDF8]" /> },
+const SKILL_CATEGORIES = [
+  {
+    title: "Frontend Development",
+    icon: <FaCode className="text-orange-400 text-lg" />,
+    description: "Building responsive, modern, and high-performance client interfaces.",
+    skills: [
+      { name: "HTML5", icon: <SiHtml5 className="text-[#E34F26]" /> },
+      { name: "CSS3", icon: <SiCss3 className="text-[#1572B6]" /> },
+      { name: "JavaScript (ES6+)", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+      { name: "React.js", icon: <SiReact className="text-[#61DBFB]" /> },
+    ],
+  },
+  {
+    title: "Backend Development",
+    icon: <FaServer className="text-orange-400 text-lg" />,
+    description: "Developing scalable server runtimes, middleware, and API architectures.",
+    skills: [
+      { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
+      { name: "Express.js", icon: <SiExpress className="text-gray-300" /> },
+      { name: "RESTful API Development", icon: <FaNetworkWired className="text-[#4DB6AC]" /> },
+    ],
+  },
+  {
+    title: "Databases & Backend Services",
+    icon: <FaDatabase className="text-orange-400 text-lg" />,
+    description: "Database schemas, query design, and cloud backend integration.",
+    skills: [
+      { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
+      { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
+      { name: "Firebase (Cloud Service)", icon: <SiFirebase className="text-[#FFCA28]" /> },
+    ],
+  },
+  {
+    title: "Tools & Collaboration",
+    icon: <FaTools className="text-orange-400 text-lg" />,
+    description: "Version control, repository management, and structured teamwork.",
+    skills: [
+      { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
+      { name: "GitHub", icon: <SiGithub className="text-white" /> },
+    ],
+  },
 ];
 
-const floatingShapes = ["circle", "triangle", "pentagon", "star", "hexagon"];
+const AI_RESEARCH_SKILLS = [
+  { name: "Machine Learning Fundamentals", icon: <FaBrain className="text-purple-400" /> },
+  { name: "Natural Language Processing (NLP)", icon: <FaRobot className="text-blue-400" /> },
+  { name: "Deep Learning", icon: <FaNetworkWired className="text-emerald-400" /> },
+  { name: "Data Preprocessing", icon: <FaChartLine className="text-amber-400" /> },
+  { name: "Research Writing", icon: <FaFileAlt className="text-rose-400" /> },
+  { name: "Model Evaluation", icon: <FaCheckDouble className="text-cyan-400" /> },
+];
+
+const CURRENTLY_LEARNING = [
+  { name: "Generative AI", icon: <FaRobot className="text-orange-400" /> },
+  { name: "ChatGPT / LLM Integration", icon: <SiOpenai className="text-emerald-400" /> },
+  { name: "AI SaaS Development", icon: <FaCloud className="text-blue-400" /> },
+  { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
+  { name: "Stripe Integration", icon: <SiStripe className="text-[#635BFF]" /> },
+];
 
 export default function Skills() {
-  const primaryColor = "#0A2647";
-  const secondaryColor = "#FF7A00";
-
-  const renderShape = (shape, size) => {
-    switch (shape) {
-      case "circle":
-        return <div className="rounded-full w-full h-full border-2 border-white/10" />;
-
-      case "triangle":
-        return (
-          <div
-            style={{
-              width: 0,
-              height: 0,
-              borderLeft: `${size / 2}px solid transparent`,
-              borderRight: `${size / 2}px solid transparent`,
-              borderBottom: `${size}px solid rgba(255,255,255,0.1)`,
-            }}
-          />
-        );
-
-      case "pentagon":
-        return (
-          <div
-            style={{
-              clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
-              backgroundColor: "rgba(255,255,255,0.1)",
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        );
-
-      case "star":
-        return (
-          <div
-            style={{
-              clipPath:
-                "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-              backgroundColor: "rgba(255,255,255,0.08)",
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        );
-
-      case "hexagon":
-        return (
-          <div
-            style={{
-              clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
-              backgroundColor: "rgba(255,255,255,0.08)",
-              width: "100%",
-              height: "100%",
-            }}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
-
   return (
     <section
       id="skills"
-      className="relative py-24 px-6 md:px-20 text-white overflow-hidden"
-      style={{ backgroundColor: primaryColor }}
+      aria-label="Technical Skills"
+      className="relative py-20 px-6 md:px-16 lg:px-20 bg-[#0A2647] border-t border-white/5"
     >
-      {/* MAIN BACKGROUND GLOW */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] bg-[#0A2647] opacity-30 rounded-full blur-3xl animation-pulse-slow -top-40 -left-24" />
-        <div className="absolute w-[400px] h-[400px] bg-[#FF7A00] opacity-18 rounded-full blur-3xl animation-pulse-slower -bottom-36 -right-16" />
-      </div>
+      <div className="max-w-6xl mx-auto">
+        
+        {/* SECTION HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-12 text-center md:text-left"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold tracking-wider text-orange-400 uppercase mb-3">
+            Technical Stack
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Skills & Technologies
+          </h2>
+          <p className="mt-3 text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
+            Technologies and engineering tools I work with across full-stack development, database management, and applied AI research.
+          </p>
+        </motion.div>
 
-      {/* FLOATING SHAPES */}
-      {Array.from({ length: 28 }).map((_, i) => {
-        const shape = floatingShapes[Math.floor(Math.random() * floatingShapes.length)];
-        const size = Math.random() * 36 + 12;
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute z-0 pointer-events-none"
-            style={{
-              width: size,
-              height: size,
-              top: `${Math.random() * 95}%`,
-              left: `${Math.random() * 95}%`,
-            }}
-            animate={{ y: [0, 14, 0], rotate: [0, 360, 0] }}
-            transition={{ duration: 6 + Math.random() * 6, repeat: Infinity, ease: "linear" }}
-          >
-            {renderShape(shape, size)}
-          </motion.div>
-        );
-      })}
-
-      <div className="relative z-10 text-center">
-        {/* ⭐ HEADING IN CENTER ⭐ */}
-        <h2 className="text-4xl font-bold mb-12">
-          My <span style={{ color: secondaryColor }}>Skills</span>
-        </h2>
-
-        {/* SKILL GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 justify-center">
-          {skills.map((item, index) => (
+        {/* PRIMARY SKILL CATEGORIES (2x2 Grid on Desktop/Tablet) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {SKILL_CATEGORIES.map((category, idx) => (
             <motion.div
-              key={index}
-              className="group bg-white/8 backdrop-blur-md rounded-2xl border border-transparent p-6 shadow-lg 
-                         hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer flex flex-col items-center"
-              whileHover={{ y: -6 }}
+              key={idx}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
+              className="bg-white/5 border border-white/10 hover:border-orange-500/30 rounded-xl p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between"
             >
-              <div className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110">
-                {item.icon}
+              <div>
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                    {category.title}
+                  </h3>
+                </div>
+
+                <p className="text-xs text-gray-400 mb-5 leading-relaxed">
+                  {category.description}
+                </p>
+
+                {/* Skill Pills */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, sIdx) => (
+                    <div
+                      key={sIdx}
+                      className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.08] transition-colors text-xs sm:text-sm font-medium text-gray-200"
+                    >
+                      <span className="text-base shrink-0">{skill.icon}</span>
+                      <span>{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <p className="text-lg font-semibold text-gray-100 group-hover:text-[#FF7A00] transition-colors text-center">
-                {item.name}
-              </p>
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* INLINE STYLES */}
-      <style>{`
-        @keyframes pulseSlow {
-          0%,100% { transform: scale(1); opacity: 0.22; }
-          50% { transform: scale(1.15); opacity: 0.35; }
-        }
-        @keyframes pulseSlower {
-          0%,100% { transform: scale(1); opacity: 0.12; }
-          50% { transform: scale(1.25); opacity: 0.22; }
-        }
-        .animation-pulse-slow { animation: pulseSlow 7s infinite ease-in-out; }
-        .animation-pulse-slower { animation: pulseSlower 9s infinite ease-in-out; }
-      `}</style>
+        {/* AI & RESEARCH CATEGORY (Wide Card) */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          className="bg-white/5 border border-white/10 hover:border-orange-500/30 rounded-xl p-6 sm:p-7 mb-6 transition-all duration-200"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+              <FaBrain className="text-orange-400 text-lg" />
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+              AI & Research
+            </h3>
+          </div>
+
+          <p className="text-xs text-gray-400 mb-5 leading-relaxed">
+            Machine learning modeling, NLP pipelines, data preprocessing, and academic publication methodologies.
+          </p>
+
+          <div className="flex flex-wrap gap-2.5">
+            {AI_RESEARCH_SKILLS.map((skill, idx) => (
+              <div
+                key={idx}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.08] transition-colors text-xs sm:text-sm font-medium text-gray-200"
+              >
+                <span className="text-base shrink-0">{skill.icon}</span>
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CURRENTLY LEARNING / EXPLORING SECTION */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
+          className="bg-white/5 border border-white/10 hover:border-orange-500/30 rounded-xl p-6 sm:p-7 transition-all duration-200"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                <FaGraduationCap className="text-orange-400 text-lg" />
+              </div>
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                  Currently Learning & Exploring
+                </h3>
+              </div>
+            </div>
+
+            <span className="self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              In Progress
+            </span>
+          </div>
+
+          <p className="text-xs text-gray-400 mb-5 leading-relaxed max-w-3xl">
+            Currently expanding skills in Generative AI architectures, LLM integrations, and modern AI SaaS development practices.
+          </p>
+
+          <div className="flex flex-wrap gap-2.5">
+            {CURRENTLY_LEARNING.map((skill, idx) => (
+              <div
+                key={idx}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/[0.08] transition-colors text-xs sm:text-sm font-medium text-gray-200"
+              >
+                <span className="text-base shrink-0">{skill.icon}</span>
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
 }

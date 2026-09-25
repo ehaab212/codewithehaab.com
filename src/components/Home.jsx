@@ -1,145 +1,121 @@
 // src/components/Home.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import shayanImage from "../assets/ehaab.jpeg";
-import { AiFillGithub, AiFillLinkedin, AiOutlineMail } from "react-icons/ai";
-import { FaWhatsapp } from "react-icons/fa";
-import { Typewriter } from "react-simple-typewriter";
-
-const roles = [
-  "Software Engineer",
-  "Web Developer",
-  "AI Engineer",
-  "Machine Learning Researcher",
-];
+import { FaGithub, FaLinkedin, FaArrowRight, FaDownload } from "react-icons/fa";
+import profileImage from "../assets/ehaab.png";
 
 const Home = () => {
-  const primaryColor = "#0A2647";
-  const secondaryColor = "#FF7A00";
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("projects");
+    if (element) {
+      const offset = -20;
+      const top = element.getBoundingClientRect().top + window.scrollY + offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
 
   return (
     <section
       id="home"
-      className="flex flex-col-reverse md:flex-row items-center justify-between min-h-screen px-6 md:px-20 pt-24 pb-10"
-      style={{ backgroundColor: primaryColor }}
+      aria-label="Introduction & Hero"
+      className="relative min-h-[90vh] flex items-center justify-center px-6 md:px-16 lg:px-20 pt-28 pb-16 bg-[#0A2647]"
     >
-      {/* LEFT CONTENT */}
-      <div className="flex-1 text-center md:text-left mt-10">
-        <motion.h1
-          className="text-4xl md:text-5xl font-bold mb-4 text-white"
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        {/* TEXT CONTENT COLUMN */}
+        <motion.div
+          className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          Ehaab Ullah
-        </motion.h1>
+          {/* Subtitle / Role Tag */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-orange-400 mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Software Engineer &bull; MERN Developer &bull; AI Researcher
+          </div>
 
-        {/* Typing Effect */}
-        <div className="text-xl md:text-2xl font-medium text-orange-500 h-10 mb-6">
-          <Typewriter
-            words={roles}
-            loop={0}
-            cursor
-            cursorStyle="|"
-            typeSpeed={100}
-            deleteSpeed={50}
-            delaySpeed={1500}
-          />
-        </div>
+          {/* Main Name & Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-3">
+            Hi, I'm <span className="text-[#FF7A00]">Ehaab Ullah</span>
+          </h1>
 
-        <p className="text-white text-base md:text-lg max-w-md mb-6">
-          Software Engineer with expertise in MERN stack, AI, and machine learning.
-          I build scalable web applications, integrate intelligent systems, and
-          deliver high-performance solutions.
-        </p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-200 mb-5">
+            Software Engineer & MERN Stack Developer
+          </h2>
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row items-center md:items-start gap-4 mb-6">
-          <a
-            href="/ehaab_ullah_cv.pdf"
-            download
-            className="px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 transform hover:-translate-y-1"
-            style={{ backgroundColor: secondaryColor }}
-          >
-            Download CV
-          </a>
+          {/* Concise Supporting Description */}
+          <p className="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed mb-8">
+            I build full-stack web applications with React, Node.js, Express.js, and MongoDB, with additional experience in AI and research.
+          </p>
 
-          <a
-            href="#contact"
-            className="px-6 py-3 rounded-full font-semibold text-white transition-all duration-300 transform hover:-translate-y-1"
-            style={{ backgroundColor: secondaryColor }}
-          >
-            Hire Me
-          </a>
-        </div>
+          {/* Primary Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
+            <button
+              onClick={scrollToProjects}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white bg-[#FF7A00] hover:bg-orange-600 transition-colors duration-200 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF7A00] focus:ring-offset-2 focus:ring-offset-[#0A2647]"
+            >
+              View Projects
+              <FaArrowRight className="text-sm" />
+            </button>
 
-        {/* Social Icons */}
-        <div className="flex gap-4 mt-6">
-          {/* GitHub */}
-          <a
-            href="https://github.com/ehaab212"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 flex items-center justify-center hover:scale-110 transition"
-          >
-            <AiFillGithub className="text-3xl text-white hover:text-black" />
-          </a>
+            <a
+              href="/ehaab_ullah_cv.pdf"
+              download="Ehaab_Ullah_CV.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-gray-200 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            >
+              <FaDownload className="text-sm" />
+              Download CV
+            </a>
+          </div>
 
-          {/* LinkedIn */}
-          <a
-            href="https://www.linkedin.com/in/ehaab-ullah"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 flex items-center justify-center hover:scale-110 transition"
-          >
-            <AiFillLinkedin className="text-3xl text-white hover:text-blue-500" />
-          </a>
+          {/* Clean Social Profiles */}
+          <div className="flex items-center gap-4 text-gray-300">
+            <span className="text-sm text-gray-400 font-medium">Connect:</span>
+            
+            <a
+              href="https://github.com/ehaab212"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/25 transition-all duration-200 text-lg"
+            >
+              <FaGithub />
+            </a>
 
-          {/* Gmail (FIXED) */}
-          <a
-            href="mailto:ehaabullah912@gmail.com?subject=Contact%20from%20Portfolio&body=Hello%20Ehaab,"
-            className="w-12 h-12 flex items-center justify-center hover:scale-110 transition"
-          >
-            <AiOutlineMail className="text-3xl text-white hover:text-red-500" />
-          </a>
+            <a
+              href="https://www.linkedin.com/in/ehaab-ullah-b064372b1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/25 transition-all duration-200 text-lg"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
+        </motion.div>
 
-          {/* WhatsApp */}
-          <a
-            href="https://wa.me/923105925068"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 flex items-center justify-center hover:scale-110 transition"
-          >
-            <FaWhatsapp className="text-3xl text-white hover:text-green-500" />
-          </a>
-        </div>
+        {/* PROFILE IMAGE COLUMN */}
+        <motion.div
+          className="lg:col-span-5 flex justify-center lg:justify-end"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+        >
+          <div className="relative">
+            {/* Subtle card frame */}
+            <div className="p-2 rounded-2xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-xs">
+              <img
+                src={profileImage}
+                alt="Ehaab Ullah — Software Engineer"
+                className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 object-cover rounded-xl"
+              />
+            </div>
+          </div>
+        </motion.div>
 
-        {/* Backup Email Display */}
-        <p className="text-sm text-gray-300 mt-3">
-          Email:{" "}
-          <a
-            href="mailto:ehaabullah912@gmail.com"
-            className="text-orange-400 hover:underline"
-          >
-            ehaabullah912@gmail.com
-          </a>
-        </p>
       </div>
-
-      {/* RIGHT IMAGE */}
-      <motion.div
-        className="flex-1 flex justify-center md:justify-end mb-8 md:mb-0"
-        initial={{ opacity: 0, x: 50, scale: 0.8 }}
-        animate={{ opacity: 1, x: 0, scale: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <img
-          src={shayanImage}
-          alt="Ehaab Ullah"
-          className="w-56 h-56 md:w-80 md:h-80 object-cover rounded-full border-4 shadow-lg"
-          style={{ borderColor: secondaryColor }}
-        />
-      </motion.div>
     </section>
   );
 };
